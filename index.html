@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Abstract Art Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Abstract Art Generator</h1>
+        <div class="canvas-container">
+            <canvas id="artCanvas"></canvas>
+        </div>
+        <div class="controls">
+            <button id="newArtBtn">Generate New Artwork</button>
+            <div class="slider-container">
+                <label for="complexity">Complexity:</label>
+                <input type="range" id="complexity" min="1" max="10" value="5">
+                <span id="complexityValue">5</span>
+            </div>
+            <div class="slider-container">
+                <label for="colorScheme">Color Scheme:</label>
+                <select id="colorScheme">
+                    <option value="random">Random</option>
+                    <option value="monochromatic">Monochromatic</option>
+                    <option value="complementary">Complementary</option>
+                    <option value="analogous">Analogous</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
