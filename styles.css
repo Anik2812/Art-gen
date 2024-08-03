@@ -2,12 +2,92 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+body.dark-mode {
+    background-color: #222;
+    color: #f0f0f0;
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#mode-label {
+    font-size: 14px;
+    transition: color 0.5s;
+}
+
+body.dark-mode #mode-label {
+    color: #f0f0f0;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -15,8 +95,12 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: #444;
+    transition: color 0.5s;
+}
+
+body.dark-mode h1 {
+    color: #f0f0f0;
 }
 
 .canvas-container {
@@ -24,10 +108,19 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.canvas-container:hover {
+    transform: scale(1.02);
 }
 
 canvas {
-    border: 3px solid #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.5s;
+}
+
+body.dark-mode canvas {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
@@ -39,21 +132,23 @@ canvas {
 }
 
 button {
-    padding: 12px 24px;
-    font-size: 18px;
-    background-color: #4CAF50;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4a90e2;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, transform 0.1s;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #3a7abd;
     transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+button:active {
+    transform: translateY(1px);
 }
 
 .slider-container {
@@ -83,24 +178,41 @@ input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     width: 20px;
     height: 20px;
-    background: #4CAF50;
+    background: #4a90e2;
     cursor: pointer;
     border-radius: 50%;
+    transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
 }
 
 input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
-    background: #4CAF50;
+    background: #4a90e2;
     cursor: pointer;
     border-radius: 50%;
+    transition: transform 0.1s;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.1);
 }
 
 select {
     padding: 8px 12px;
     font-size: 16px;
     border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #555;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode select {
+    background-color: #444;
+    color: #f0f0f0;
+    border-color: #666;
 }
